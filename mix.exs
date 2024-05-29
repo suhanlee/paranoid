@@ -12,7 +12,7 @@ defmodule Paranoid.MixProject do
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       description: "Library for soft deletion of database records.",
-      elixirc_paths: elixirc_paths(Mix.env),
+      elixirc_paths: elixirc_paths(Mix.env()),
       docs: [main: "readme", extras: ["README.md"]],
       aliases: aliases(),
       package: package()
@@ -21,7 +21,7 @@ defmodule Paranoid.MixProject do
 
   def application do
     [
-      extra_applications: app_list(Mix.env),
+      extra_applications: app_list(Mix.env())
     ]
   end
 
@@ -31,8 +31,8 @@ defmodule Paranoid.MixProject do
 
   defp deps do
     [
-      {:ecto, "~> 3.1", optional: true},
-      {:ecto_sql, "~> 3.1.6"},
+      {:ecto, "~> 3.10", optional: true},
+      {:ecto_sql, "~> 3.10"},
       {:earmark, ">= 0.0.0", only: :dev},
       {:postgrex, ">= 0.0.0", only: [:test]},
       {:ex_doc, "~> 0.18.3", only: :dev}
@@ -53,7 +53,6 @@ defmodule Paranoid.MixProject do
   defp elixirc_paths(:test), do: elixirc_paths() ++ ["test/support", "test/support/models"]
   defp elixirc_paths(_), do: elixirc_paths()
   defp elixirc_paths(), do: ["lib"]
-
 
   defp aliases do
     [
